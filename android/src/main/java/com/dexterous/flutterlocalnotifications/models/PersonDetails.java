@@ -2,10 +2,8 @@ package com.dexterous.flutterlocalnotifications.models;
 
 import androidx.annotation.Keep;
 
-import java.io.Serializable;
-
 @Keep
-public class PersonDetails implements Serializable {
+public class PersonDetails {
     public Boolean bot;
     public String icon;
     public IconSource iconBitmapSource;

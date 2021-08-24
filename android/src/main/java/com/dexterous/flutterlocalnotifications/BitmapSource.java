@@ -1,10 +1,9 @@
-package com.dexterous.flutterlocalnotifications.models;
+package com.dexterous.flutterlocalnotifications;
 
 import androidx.annotation.Keep;
 
 @Keep
 public enum BitmapSource {
     DrawableResource,
-    FilePath,
-    ByteArray
+    FilePath
 }

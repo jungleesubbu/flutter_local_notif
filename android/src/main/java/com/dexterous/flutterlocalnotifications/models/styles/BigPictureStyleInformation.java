@@ -2,7 +2,7 @@ package com.dexterous.flutterlocalnotifications.models.styles;
 
 import androidx.annotation.Keep;
 
-import com.dexterous.flutterlocalnotifications.models.BitmapSource;
+import com.dexterous.flutterlocalnotifications.BitmapSource;
 
 @Keep
 public class BigPictureStyleInformation extends DefaultStyleInformation {
@@ -10,13 +10,13 @@ public class BigPictureStyleInformation extends DefaultStyleInformation {
     public Boolean htmlFormatContentTitle;
     public String summaryText;
     public Boolean htmlFormatSummaryText;
-    public Object largeIcon;
+    public String largeIcon;
     public BitmapSource largeIconBitmapSource;
-    public Object bigPicture;
+    public String bigPicture;
     public BitmapSource bigPictureBitmapSource;
     public Boolean hideExpandedLargeIcon;
 
-    public BigPictureStyleInformation(Boolean htmlFormatTitle, Boolean htmlFormatBody, String contentTitle, Boolean htmlFormatContentTitle, String summaryText, Boolean htmlFormatSummaryText, Object largeIcon, BitmapSource largeIconBitmapSource, Object bigPicture, BitmapSource bigPictureBitmapSource, Boolean hideExpandedLargeIcon) {
+    public BigPictureStyleInformation(Boolean htmlFormatTitle, Boolean htmlFormatBody, String contentTitle, Boolean htmlFormatContentTitle, String summaryText, Boolean htmlFormatSummaryText, String largeIcon, BitmapSource largeIconBitmapSource, String bigPicture, BitmapSource bigPictureBitmapSource, Boolean hideExpandedLargeIcon) {
         super(htmlFormatTitle, htmlFormatBody);
         this.contentTitle = contentTitle;
         this.htmlFormatContentTitle = htmlFormatContentTitle;

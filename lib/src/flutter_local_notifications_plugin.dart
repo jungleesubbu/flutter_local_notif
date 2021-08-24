@@ -1,14 +1,16 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications_platform_interface/flutter_local_notifications_platform_interface.dart';
 import 'package:platform/platform.dart';
 import 'package:timezone/timezone.dart';
 
+import 'platform_specifics/ios/enums.dart';
 import 'initialization_settings.dart';
 import 'notification_details.dart';
 import 'platform_flutter_local_notifications.dart';
-import 'platform_specifics/ios/enums.dart';
+import 'typedefs.dart';
 import 'types.dart';
 
 /// Provides cross-platform functionality for displaying local notifications.
@@ -38,9 +40,6 @@ class FlutterLocalNotificationsPlugin {
   @visibleForTesting
   FlutterLocalNotificationsPlugin.private(Platform platform)
       : _platform = platform {
-    if (kIsWeb) {
-      return;
-    }
     if (platform.isAndroid) {
       FlutterLocalNotificationsPlatform.instance =
           AndroidFlutterLocalNotificationsPlugin();
@@ -72,9 +71,6 @@ class FlutterLocalNotificationsPlugin {
           T,
           'The type argument must be a concrete subclass of '
           'FlutterLocalNotificationsPlatform');
-    }
-    if (kIsWeb) {
-      return null;
     }
     if (_platform.isAndroid &&
         T == AndroidFlutterLocalNotificationsPlugin &&
@@ -114,16 +110,10 @@ class FlutterLocalNotificationsPlugin {
   /// [IOSInitializationSettings.requestSoundPermission] values to false.
   /// [IOSFlutterLocalNotificationsPlugin.requestPermissions] can then be called
   /// to request permissions when needed.
-  ///
-  /// To handle when a notification launched an application, use
-  /// [getNotificationAppLaunchDetails].
   Future<bool?> initialize(
     InitializationSettings initializationSettings, {
     SelectNotificationCallback? onSelectNotification,
   }) async {
-    if (kIsWeb) {
-      return true;
-    }
     if (_platform.isAndroid) {
       return resolvePlatformSpecificImplementation<
               AndroidFlutterLocalNotificationsPlugin>()
@@ -157,9 +147,6 @@ class FlutterLocalNotificationsPlugin {
   /// for plugins to receive information on lifecycle events.
   Future<NotificationAppLaunchDetails?>
       getNotificationAppLaunchDetails() async {
-    if (kIsWeb) {
-      return null;
-    }
     if (_platform.isAndroid) {
       return await resolvePlatformSpecificImplementation<
               AndroidFlutterLocalNotificationsPlugin>()
@@ -188,9 +175,6 @@ class FlutterLocalNotificationsPlugin {
     NotificationDetails? notificationDetails, {
     String? payload,
   }) async {
-    if (kIsWeb) {
-      return;
-    }
     if (_platform.isAndroid) {
       await resolvePlatformSpecificImplementation<
               AndroidFlutterLocalNotificationsPlugin>()
@@ -222,9 +206,6 @@ class FlutterLocalNotificationsPlugin {
   /// then the notification that matches both the id and the tag will
   /// be canceled. `tag` has no effect on other platforms.
   Future<void> cancel(int id, {String? tag}) async {
-    if (kIsWeb) {
-      return;
-    }
     if (_platform.isAndroid) {
       await resolvePlatformSpecificImplementation<
               AndroidFlutterLocalNotificationsPlugin>()
@@ -258,9 +239,6 @@ class FlutterLocalNotificationsPlugin {
     String? payload,
     bool androidAllowWhileIdle = false,
   }) async {
-    if (kIsWeb) {
-      return;
-    }
     if (_platform.isAndroid) {
       await resolvePlatformSpecificImplementation<
               AndroidFlutterLocalNotificationsPlugin>()!
@@ -319,9 +297,6 @@ class FlutterLocalNotificationsPlugin {
     String? payload,
     DateTimeComponents? matchDateTimeComponents,
   }) async {
-    if (kIsWeb) {
-      return;
-    }
     if (_platform.isAndroid) {
       await resolvePlatformSpecificImplementation<
               AndroidFlutterLocalNotificationsPlugin>()!
@@ -372,9 +347,6 @@ class FlutterLocalNotificationsPlugin {
     String? payload,
     bool androidAllowWhileIdle = false,
   }) async {
-    if (kIsWeb) {
-      return;
-    }
     if (_platform.isAndroid) {
       await resolvePlatformSpecificImplementation<
               AndroidFlutterLocalNotificationsPlugin>()
@@ -412,9 +384,6 @@ class FlutterLocalNotificationsPlugin {
     NotificationDetails notificationDetails, {
     String? payload,
   }) async {
-    if (kIsWeb) {
-      return;
-    }
     if (_platform.isAndroid) {
       await resolvePlatformSpecificImplementation<
               AndroidFlutterLocalNotificationsPlugin>()
@@ -447,9 +416,6 @@ class FlutterLocalNotificationsPlugin {
     NotificationDetails notificationDetails, {
     String? payload,
   }) async {
-    if (kIsWeb) {
-      return;
-    }
     if (_platform.isAndroid) {
       await resolvePlatformSpecificImplementation<
               AndroidFlutterLocalNotificationsPlugin>()

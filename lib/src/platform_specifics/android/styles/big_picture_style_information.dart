@@ -34,10 +34,10 @@ class BigPictureStyleInformation extends DefaultStyleInformation {
 
   /// The bitmap that will override the large icon when the big notification is
   ///  shown.
-  final AndroidBitmap<Object>? largeIcon;
+  final AndroidBitmap? largeIcon;
 
   /// The bitmap to be used as the payload for the BigPicture notification.
-  final AndroidBitmap<Object> bigPicture;
+  final AndroidBitmap bigPicture;
 
   /// Hides the large icon when showing the expanded notification.
   final bool hideExpandedLargeIcon;
